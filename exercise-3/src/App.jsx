@@ -2,25 +2,33 @@ import React from "react";
 import { ALL_PNV_TEACHERS } from "./teachers.js";
 
 // NO change to perform here...
-export function User({ user }) {
+export function User({ props }) {
   return (
     <div id="user" data-testid="user">
       <h2>
-        {user.firstName} {user.lastName}{" "}
+        {props.firstName} {props.lastName}{" "}
       </h2>
-      <p> {user.title}</p>
+      <p> {props.title}</p>
     </div>
   );
 }
 
 function App() {
+  const allteacher = ALL_PNV_TEACHERS;
   return (
     <div id="app">
       <h1>PNV Team !!</h1>
       <p>Here are some PNV trainers and educators, do you know them?</p>
-      <User /> {/* How to loop on ALL_PNV_TEACHERS list ? */}
+      {allteacher.map((expert)=>
+      (
+        <User
+          props={expert}         
+        />
+      ))
+      }
     </div>
   );
 }
 
 export default App;
+
